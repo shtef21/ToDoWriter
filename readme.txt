@@ -10,7 +10,5 @@ Generalno, napravio bih to na sljedeći način:
     Naredbom Check-ToDo otvarao bi se popis na sličan način kao u "ViM" text editoru. Odnosno, prikazao bi se popis stavki sa mogućnošću pisanja jednostavnih naredbi. Primjer naredbi bio bi dodavanje novih stavki, brisanje, označavanje stavke obavljenom i slično
     U skripti Write-ToDo dodatno bih postavio provjeru - ako postoji barem jedna neodrađena TO-DO stavka, tada se postavlja pokretanje naredbe Check-ToDo u startup direktorij Windowsa. Ukoliko takve stavke ne postoje, tada se miče pokretanje prilikom startupa.
     Na taj način bi se prilikom pokretanja Windowsa prikazivao popis naredbe Check-ToDo, ukoliko postoje neodrađene stavke.
-
-
-Naravno, ideja bi se dodatno mogla proširiti parametrima i drugim mogućnostima, ukoliko bi spomenute funkcionalnosti bile prejednostavne za implementirati.
+    
 ...
