@@ -14,7 +14,7 @@ function setup_module {
 
 function Show-ToDo {
     param (
-        [string] $title, # Title before printing the list out
+        [string] $title,   # Title before printing the list out
         [switch] $Concise  # If sent, does not show DONE tasks
     )
     
@@ -31,8 +31,8 @@ function Show-ToDo {
 
     # Filter out empty values
     $todo_list = $todo_list.Where({
-            [string]::IsNullOrWhiteSpace($_) -eq $false
-        })
+        [string]::IsNullOrWhiteSpace($_) -eq $false
+    })
 
     # No TODOs found
     if ($todo_list.Count -eq 0) {
@@ -59,10 +59,10 @@ function Show-ToDo {
 
 function Add-ToDo {
     param(
-        [string] $ToDo, # Item value
-        [switch] $Done, # Should this ToDo be marked as finished
+        [string] $ToDo,  # Item value
+        [switch] $Done,  # Should this ToDo be marked as finished
         [switch] $Many   # (Not implemented) If sent, then $ToDo contains
-        #           a list of TODOs, delimited by commas
+                         #           a list of TODOs, delimited by commas
     )
 
     # Check proper params sent
@@ -78,8 +78,8 @@ function Add-ToDo {
 
     # Filter out empty values
     $todo_list = $todo_list.Where({
-            [string]::IsNullOrWhiteSpace($_) -eq $false
-        })
+        [string]::IsNullOrWhiteSpace($_) -eq $false
+    })
 
     # Prepare TODO for save
     $todo = $todo.Trim()
@@ -140,7 +140,7 @@ function Set-ToDo {
     $update_idx_arr = [System.Collections.ArrayList]::new()
 
     # Iterate many input values
-    foreach ($input_val in $user_input.Split().Where({ $_ })) {
+    foreach($input_val in $user_input.Split().Where({$_})) {
 
         # Parse index
         [int] $update_idx = ([int] $input_val) - 1
@@ -155,9 +155,11 @@ function Set-ToDo {
     }
 
     # If there are any items, process the update
-    if ($update_idx_arr.Count -gt 0) {
+    if ($update_idx_arr.Count -gt 0)
+    {
         # Remove items from list
-        foreach ($update_idx in $update_idx_arr) {
+        foreach($update_idx in $update_idx_arr)
+        {
             # Update element at that index
             $todo_list[$update_idx] = "DONE" + $todo_list[$update_idx].Substring(4)
 
@@ -202,7 +204,7 @@ function Reset-ToDo {
     $update_idx_arr = [System.Collections.ArrayList]::new()
 
     # Iterate many input values
-    foreach ($input_val in $user_input.Split().Where({ $_ })) {
+    foreach($input_val in $user_input.Split().Where({$_})) {
 
         # Parse index
         [int] $update_idx = ([int] $input_val) - 1
@@ -217,9 +219,11 @@ function Reset-ToDo {
     }
 
     # If there are any items, process the update
-    if ($update_idx_arr.Count -gt 0) {
+    if ($update_idx_arr.Count -gt 0)
+    {
         # Remove items from list
-        foreach ($update_idx in $update_idx_arr) {
+        foreach($update_idx in $update_idx_arr)
+        {
             # Update element at that index
             $todo_list[$update_idx] = "TODO" + $todo_list[$update_idx].Substring(4)
 
@@ -264,7 +268,7 @@ function Remove-ToDo {
     $to_remove = [System.Collections.ArrayList]::new()
 
     # Iterate many input values
-    foreach ($input_val in $user_input.Split().Where({ $_ })) {
+    foreach($input_val in $user_input.Split().Where({$_})) {
 
         # Parse index
         [int] $remove_idx = ([int] $input_val) - 1
@@ -281,9 +285,11 @@ function Remove-ToDo {
     }
 
     # If there are any items, process the deletion
-    if ($to_remove.Count -gt 0) {
+    if ($to_remove.Count -gt 0)
+    {
         # Remove items from list
-        foreach ($del_item in $to_remove) {
+        foreach($del_item in $to_remove)
+        {
             $todo_list.Remove($del_item)
 
             # Show which item has been deleted
@@ -306,4 +312,4 @@ New-Alias -Name "stodo" Set-ToDo     # stodo - Set    TODO
 New-Alias -Name "rtodo" Reset-ToDo   # rtodo - Reset  TODO
 New-Alias -Name "dtodo" Remove-ToDo  # dtodo - Delete TODO
 
-Export-ModuleMember -Function Start-Client, Show-ToDo, Add-ToDo, Set-ToDo, Reset-ToDo, Remove-ToDo -Alias atodo, ltodo, stodo, rtodo, dtodo
+Export-ModuleMember -Function Show-ToDo, Add-ToDo, Set-ToDo, Reset-ToDo, Remove-ToDo -Alias atodo, ltodo, stodo, rtodo, dtodo
