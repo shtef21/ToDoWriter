@@ -1,9 +1,8 @@
-# ToDoWriter module
+Title:
+ToDoWriter module
 
-## ToDoWriter
-ToDo application written in powershell
 
-## Description
+Description:
 A PowerShell TODO app which enables its user to add TODO items, mark them as done / open and remove them.
 Aside from that, it provides a ToDoWriter client which provides a basic UI and a session in which user may
 add and manage many items at once.
@@ -12,18 +11,28 @@ each time the user starts the pc, they will see the TODO list. To enable this be
 the instructions provided by the Set-ToDoClientStartup CMDLET.
 
 
-## Module CMDLETs
- - List TODOs (alias ltodo) - `Show-ToDo`
- - Add a TODO (alias atodo) - `Add-ToDo -ToDo <string> [-Done]`
- - Mark one or more TODO items as done (alias stodo) - `Set-ToDo`
- - Mark one or more TODO items as open (alias rtodo) - `Reset-ToDo`
- - Remove one or more TODO items (alias dtodo) - `Remove-ToDo`
- - Start the client - `Start-ToDoClient`
- - Get instructions for starting the client on system startup - `Get-ToDoClientStartupManual`
+GitHub repository:
+https://github.com/shtef21/ToDoWriter
 
 
-## Example CMDLET usage
-```
+Module CMDLETs:
+ - List TODOs (alias ltodo)
+    Show-ToDo
+ - Add a TODO (alias atodo)
+    Add-ToDo -ToDo <string> [-Done]
+ - Mark one or more TODO items as done (alias stodo)
+    Set-ToDo
+ - Mark one or more TODO items as open (alias rtodo)
+    Reset-ToDo
+ - Remove one or more TODO items (alias dtodo)
+    Remove-ToDo
+ - Start the client
+    Start-ToDoClient
+ - Get instructions for starting the client on system startup:
+    Get-ToDoClientStartupManual
+
+
+Example CMDLET usage:
     Show-ToDo
     Add-ToDo -ToDo "Make supper"
     Add-ToDo "Finish the powershell script"
@@ -32,4 +41,3 @@ the instructions provided by the Set-ToDoClientStartup CMDLET.
     Reset-ToDo    # This opens up a dialog for marking TODOs as Open
     Remove-ToDo   # This opens up a dialog for deleting TODOs
     Show-ToDo
-```

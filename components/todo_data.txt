@@ -1,2 +1,0 @@
-TODO "otici spati"
-DONE "napraviti task"

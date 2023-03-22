@@ -5,16 +5,16 @@
 #     ToDoWriter client to work properly
 
 # Reimport the newest version of ToDoWriter
-if ([System.IO.File]::Exists("./ToDoWriter.psm1")) {
-    Import-Module "./ToDoWriter.psm1" -Force
+if ([System.IO.File]::Exists("$PSScriptRoot\ToDoWriter.psm1")) {
+    Import-Module "$PSScriptRoot\ToDoWriter.psm1" -Force
 }
 else {
     # Try to import from any module directory
     Import-Module ToDoWriter -Force
 }
 
-# Check if module imported properly
-if (-not(Get-Module -ListAvailable -Name ToDoWriter)) {
+# Check if module imported properly (by calling Show-ToDo)
+if (-not(Get-Command Show-ToDo -errorAction SilentlyContinue)) {
     Write-Host "Cannot import module ToDoWriter. Please fix the issue and try again."
     return
 }
@@ -45,6 +45,7 @@ function prompt_user_response {
 }
 
 # Show list initially
+Clear-Host
 Show-ToDo
 
 # Setup CMD loop
