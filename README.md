@@ -1,6 +1,4 @@
 # ToDoWriter module
-
-## ToDoWriter
 ToDo application written in powershell
 
 ## Description
