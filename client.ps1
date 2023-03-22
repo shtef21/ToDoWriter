@@ -2,7 +2,7 @@
 # If this file opened in a text editor after system startup, please go to...
 #   C:\Users\{USER}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 # ... and set .ps1 file opening application to powershell.exe in order for
-#     ToDoWriter module to work properly
+#     ToDoWriter client to work properly
 
 # Reimport the newest version of ToDoWriter
 if ([System.IO.File]::Exists("./ToDoWriter.psm1")) {
@@ -13,6 +13,13 @@ else {
     Import-Module ToDoWriter -Force
 }
 
+# Check if module imported properly
+if (-not(Get-Module -ListAvailable -Name ToDoWriter)) {
+    Write-Host "Cannot import module ToDoWriter. Please fix the issue and try again."
+    return
+}
+
+# User command dialog
 function prompt_user_response {
 
     # Show available commands
@@ -37,34 +44,42 @@ function prompt_user_response {
     return $cmd
 }
 
-# Show list
-Clear-Host
+# Show list initially
 Show-ToDo
 
+# Setup CMD loop
 $keep_alive = $true
-
 while ($keep_alive) {
 
+    # Prompt for command
     [string] $cmd = prompt_user_response
 
     if ($cmd -eq "s" -or $cmd -eq "show") {
+        # Show TODOs
+
         Clear-Host
         Show-ToDo
     }
     elseif ($cmd -eq "a" -or $cmd -eq "add") {
+        # Add 1 or more TODOs
 
         $counter = 1
         while ($counter -gt 0) {
             Clear-Host
-            $todo = Read-Host -Prompt "Enter item $counter"
+            $todo = Read-Host -Prompt "Enter item $counter (or ENTER to stop)"
 
             if ([string]::IsNullOrWhiteSpace($todo)) {
+                # Stop input and show list
+
                 $counter = -1
                 Show-ToDo
             }
             else {
+                # Should inserted TODO be marked as DONE?
+
                 [string] $done = Read-Host -Prompt "  Done (y/N)? "
 
+                # Add TODO
                 if ($done.ToLower().StartsWith("y")) {
                     Add-ToDo -ToDo $todo -Done
                 }
@@ -76,21 +91,31 @@ while ($keep_alive) {
         }
     }
     elseif ($cmd -eq "f" -or $cmd -eq "finish") {
+        # Set one or more TODOs as DONE
+
         Clear-Host
         Set-ToDo
     }
     elseif ($cmd -eq "o" -or $cmd -eq "open") {
+        # Set one or more TODOs as opened
+
         Clear-Host
         Reset-ToDo
     }
     elseif ($cmd -eq "d" -or $cmd -eq "delete") {
+        # Delete one or more TODOs
+
         Clear-Host
         Remove-ToDo
     }
     elseif ($cmd -eq "q" -or $cmd -eq "") {
+        # Quit client
+
         $keep_alive = $false
     }
     else {
+        # Unknown command
+
         Clear-Host
         Write-Host "Command '$cmd' not recognized."
     }
