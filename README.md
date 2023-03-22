@@ -5,8 +5,10 @@ ToDo application written in powershell
 
 ## Description
 A PowerShell TODO app which enables its user to add TODO items, mark them as done / open and remove them.
-Aside from that, it provides a ToDoWriter client which provides a basic UI and a session in which user may
+
+It also provides a ToDoWriter client which provides a basic UI and a session in which user may
 add and manage many items at once.
+
 Another useful behaviour regarding the module is putting the client script in the startup folder. That way,
 each time the user starts the pc, they will see the TODO list. To enable this behaviour, you may check out
 the instructions provided by the Set-ToDoClientStartup CMDLET.
@@ -23,13 +25,16 @@ the instructions provided by the Set-ToDoClientStartup CMDLET.
 
 
 ## Example CMDLET usage
-```
-    Show-ToDo
-    Add-ToDo -ToDo "Make supper"
-    Add-ToDo "Finish the powershell script"
-    Add-ToDo "Create a manual" -Done
-    Set-ToDo      # This opens up a dialog for marking TODOs as Done
-    Reset-ToDo    # This opens up a dialog for marking TODOs as Open
-    Remove-ToDo   # This opens up a dialog for deleting TODOs
-    Show-ToDo
+```powershell
+Show-ToDo
+Add-ToDo -ToDo "Make supper"
+Add-ToDo "Finish the powershell script"    # Implicit -ToDo
+Add-ToDo "Create a manual" -Done
+
+Set-ToDo           # This opens up a dialog for marking TODOs as Done
+Reset-ToDo         # This opens up a dialog for marking TODOs as Open
+Remove-ToDo        # This opens up a dialog for deleting TODOs
+Show-ToDo
+
+Start-ToDoClient
 ```
