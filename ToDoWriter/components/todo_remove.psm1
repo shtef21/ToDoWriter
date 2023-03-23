@@ -45,7 +45,7 @@ function Remove-ToDo {
 
         # Parse index
         [int] $remove_idx = ([int] $input_val) - 1
-        
+
         # If user entered valid element
         if ($remove_idx -ge 0 -and $remove_idx -lt $todo_list.Count) {
             
@@ -53,7 +53,7 @@ function Remove-ToDo {
             $to_remove.Add($item)
         }
         else {
-            Write-Host "Cannot find item $user_input. Please choose an item by its number."
+            Write-Host "Cannot find item $input_val. Please choose an item by its number."
         }
     }
 

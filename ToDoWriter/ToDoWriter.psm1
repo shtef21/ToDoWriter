@@ -1,10 +1,10 @@
 
 # Import modules
-Import-Module ./components/todo_show.psm1
-Import-Module ./components/todo_add.psm1
-Import-Module ./components/todo_remove.psm1
-Import-Module ./components/todo_set.psm1
-Import-Module ./components/todo_reset.psm1
+Import-Module ./components/todo_show.psm1 -Force
+Import-Module ./components/todo_add.psm1 -Force
+Import-Module ./components/todo_remove.psm1 -Force
+Import-Module ./components/todo_set.psm1 -Force
+Import-Module ./components/todo_reset.psm1 -Force
 
 function Start-ToDoClient {
     . ./client.ps1

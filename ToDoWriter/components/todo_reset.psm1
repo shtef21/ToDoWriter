@@ -51,7 +51,7 @@ function Reset-ToDo {
             $update_idx_arr.Add($update_idx)
         }
         else {
-            Write-Host "Cannot find item $user_input. Please choose an item by its number."
+            Write-Host "Cannot find item $input_val. Please choose an item by its number."
         }
     }
 

@@ -1,2 +1,3 @@
-TODO "Finish the powershell script"
+DONE "Finish the powershell script"
 TODO "Make supper"
+TODO "Present task"
